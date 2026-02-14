@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-echo 'Pizza & Pasta & Wine'
+echo 'Pizza & Pasta & Vino'
