@@ -4,6 +4,8 @@
 
 > Fenrir ID: `git/ad-nib`
 
+WARNING: Update tests!
+
 == Task submission
 
 Do not create any merge request! Just push all the branches to the remote repository.
