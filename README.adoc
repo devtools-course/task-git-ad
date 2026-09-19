@@ -1,30 +1,34 @@
-= Task Git Additions
+= Task Git Advanced
 
 :icons: font
 
-> Fenrir ID: `git/ad-nib`
-
-WARNING: Update tests!
+> Fenrir ID: `git/ad-nib` +
+> Points: `50`
 
 == Task submission
 
 Do not create any merge request! Just push all the branches to the remote repository.
+
+Tests check each commit’s hash: do not create any extra commits unless it is stated.
+Use detached mode to check out to the required branch and create a local branch from the commit you’ve switched to.
+
+Each part adds `10` points to the final score.
 
 == Task description
 
 The task sources are available https://github.com/devtools-course/task-git-ad[here].
 Add this repository as a remote and fetch all branches.
 
-=== Part 1
+=== Part 1 (Task `rebase`)
 
-Switch to branch `rebase` and apply these changes:
+Switch to the `rebase` branch and apply these changes:
 
 * Rename `naples` to `napoli`
 * Drop `genova` commit
 * Developers forgot to make `script.sh` executable in `roma` : fix it
 * Squash `firenze` and `bologna` into a single commit with `torino` message and `firenze & bologna` body
 
-=== Part 2
+=== Part 2 (Task `ignore`)
 
 > Use `supplementary` branch to find the sources
 
@@ -35,22 +39,47 @@ Create branch `ignore` from the `main` branch in `foreign.bundle`. Add `.gitigno
 
 IMPORTANT: Only one commit is allowed apart from the bundle's commits.
 
-=== Part 3
+=== Part 3 (Task `hooks`)
 
-Create a git hook which validates commit messages:  `[␣DESCRIPTOR␣]␣DESCRIPTION`
-
-* `DESCRIPTOR` is one of `ADD`, `FIX`, `DEL`
-* `DESCRIPTION` is a sequence of latin symbols and digits
-* `␣` is a whitespace symbol
+Sometimes developers forget to make `.sh`-scripts executable.
+Create a git hook which corrects this mistake.
 
 To use the hook create an additional script `install`
-which installs the hook. The solution must be committed to `hooks` branch.
+which installs the hook. The solution must be committed to the `hooks` branch.
 
-=== Part 4
+[TIP]
+====
+Use the following templates:
+
+install::
+[,bash]
+----
+#! /bin/bash
+
+set -e
+
+# TODO: your commands (e.g. move script.sh to the correct place)
+----
+
+script.sh::
+[,bash]
+----
+#! /bin/bash
+
+for file in $(/* TODO: command that lists all updated filed */); do
+	if [[ "$file" == *.sh ]]; then
+		# TODO: command that makes .sh files executable
+	fi
+done
+----
+
+====
+
+=== Part 4 (Task `submodules`)
 
 Create a public fork of https://gitlab.com/ygdrasil/progtech/tech-tasks/modules/baba-jaga[this repository]. The fork must be located in your user's namespace. The fork name must be `koshej`.
 
-Add the fork as a submodule into your project (branch `submodules`), it must be cloned to `koshchei` directory.
+Add the fork as a submodule to your project (branch `submodules`). It must be cloned to `koshchei` directory.
 
 Add https://gitlab.com/ygdrasil/progtech/tech-tasks/modules/hare[this repository] as another submodule. It must be cloned to `oak/hare` directory.
 
@@ -71,7 +100,7 @@ branch.
 * How to use/extract files from another branch? (Try to use commands from the previous task)
 * What happens when you try to merge branches that have no common ancestor?
 * Which sequence of commands does GitLab/GitHub use to create a fork?
-* Provide a scenario when the committer and author differ without any explicit modifications.
+* Provide a scenario when the committer and the author differ without any explicit modifications.
 
 == Copyright
 
