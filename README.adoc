@@ -73,6 +73,8 @@ for file in $(/* TODO: command that lists all updated filed */); do
 done
 ----
 
+TIP: Для достижения желаемого вам могут понадобиться низкоуровневые команды: `git diff`, `git diff-index`, `git update-index`
+
 ====
 
 === Part 4 (Task `submodules`)
